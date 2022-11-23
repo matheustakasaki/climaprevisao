@@ -1,4 +1,4 @@
-export interface IWeather {
+export interface IWeatherMain {
 
 	main: {
 		temp_min: number;

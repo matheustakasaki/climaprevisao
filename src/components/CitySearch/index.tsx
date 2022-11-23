@@ -1,24 +1,26 @@
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { WheatherContext } from "../../context/WheaterContext";
 
 export default function CitySearch() {
+	const { weather, setWeather } = useContext(WheatherContext);
+
 	const [city, setCity] = useState("");
 
-	const getCity = async (name: string) => {
+	const handleGetCity = async (cityName: string) => {
 		try {
 			const cityReq = await axios.get(
-				`http://api.openweathermap.org/geo/1.0/direct?q=${name}&appid=a6564119b6b053c6c561774a3ed814bf`
+				`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&appid=a6564119b6b053c6c561774a3ed814bf`
 			);
-			const cityData = cityReq.data[0];
+			const cityData = await cityReq.data[0];
 
 			return cityData;
 		} catch (error) {
 			console.log(error);
 		}
 	};
-
-	const getWeather = async (cityName: string) => {
-		const { name, lat, lon, state } = await getCity(cityName);
+	const handleGetWeather = async (cityName: string) => {
+		const { name, lat, lon, state } = await handleGetCity(cityName);
 
 		try {
 			const weatherReq = await axios.get(
@@ -26,16 +28,23 @@ export default function CitySearch() {
 			);
 
 			const weatherData = await weatherReq.data;
-			console.log(weatherData);
+
+			setWeather(weatherData);
+			return weather;
 		} catch (error) {
-			console.log(error);
+			console.log("Erro Get Weather", error);
 		}
 	};
+
+	useEffect(() => {
+		console.log(city);
+		console.log(weather);
+	}, [weather, city]);
 	return (
 		<form
 			onSubmit={(e) => {
 				e.preventDefault();
-				getWeather(city);
+				handleGetWeather(city);
 			}}
 			className="mt-6 right-0 pb-4 w-full flex gap-2 justify-center"
 		>
