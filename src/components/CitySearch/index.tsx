@@ -42,9 +42,7 @@ export default function CitySearch() {
 	// Armazenar Estado da cidade desejada
 	const [city, setCity] = useState("");
 
-	useEffect(() => {
-		console.log(weather);
-	}, [weather, city]);
+	useEffect(() => {}, [weather, city]);
 	return (
 		<form
 			onSubmit={(e) => {
