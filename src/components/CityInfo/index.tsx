@@ -27,28 +27,34 @@ export default function CityInfo() {
 				<>
 					<section className="w-full flex-col md:flex-row flex justify-between items-center">
 						<div className="max-h-[450px] flex-col flex justify-between items-start gap-6">
-							<h1 className="text-5xl font-bold md:text-left text-center w-full">
+							<h1 className="text-5xl dark:text-zinc-100 font-bold md:text-left text-center w-full">
 								{weather.name}
 							</h1>
 
-							<div className="flex gap-5">
+							<div className="flex gap-5 items-center">
 								<div className="text-center">
-									<p className="text-lg">Mínima</p>
-									<h3 className="text-lg">{`${tempMin}ºC`}</h3>
+									<p className="text-md dark:text-zinc-100">
+										Mínima
+									</p>
+									<h3 className="text-md dark:text-zinc-100">{`${tempMin}ºC`}</h3>
 								</div>
 								<div className="text-center">
-									<p className="text-2xl">Atual</p>
+									<p className="text-2xl dark:text-zinc-100">
+										Atual
+									</p>
 									<h3
 										className={`text-2xl font-bold ${tempTextColor}`}
 									>{`${temp}ºC`}</h3>
 								</div>
 								<div className="text-center">
-									<p className="text-lg">Máxima</p>
-									<h3 className="text-lg">{`${tempMax}ºC`}</h3>
+									<p className="text-md dark:text-zinc-100">
+										Máxima
+									</p>
+									<h3 className="text-md dark:text-zinc-100">{`${tempMax}ºC`}</h3>
 								</div>
 							</div>
 
-							<p className="text-lg text-slate-300 text-center md:text-left w-full capitalize">
+							<p className="text-lg text-stone-900 dark:text-zinc-100 underline l font-semibold text-center md:text-left w-full capitalize">
 								{weather.weather[0].description}
 							</p>
 						</div>

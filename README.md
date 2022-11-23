@@ -11,3 +11,5 @@
 
 `npm install`
 `npm run dev`
+
+-   ❗❗ Este projeto suporta sua definição de tema configurada no sistema operacional

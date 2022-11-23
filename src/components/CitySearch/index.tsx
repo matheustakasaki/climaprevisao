@@ -60,13 +60,13 @@ export default function CitySearch() {
 				id="city"
 				value={city}
 				placeholder="Digite o nome da cidade"
-				className="p-3 rounded-md w-[85%] font-semibold"
+				className="p-3 rounded-md w-[85%] font-bold text-xl border border-black dark:border-zinc-100 dark:text-zinc-100 bg-transparent"
 			/>
 
 			<input
 				type="submit"
 				value="Enviar"
-				className="hover:cursor-pointer rounded-md w-[20%] bg-green-800 font-bold"
+				className="hover:cursor-pointer rounded-md w-[20%] text-white text-xl bg-green-800 font-bold"
 			/>
 		</form>
 	);
