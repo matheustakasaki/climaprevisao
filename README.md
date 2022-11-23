@@ -5,6 +5,7 @@
 -   Typescript
 -   Tailwindcss
 -   Axios
+-   Lottie
 
 ### Como testar
 

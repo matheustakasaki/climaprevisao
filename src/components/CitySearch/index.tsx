@@ -3,10 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { WheatherContext } from "../../context/WheaterContext";
 
 export default function CitySearch() {
-	const { weather, setWeather } = useContext(WheatherContext);
-
-	const [city, setCity] = useState("");
-
+	// Requisições para busca de dados referentes à cidade desejada
 	const handleGetCity = async (cityName: string) => {
 		try {
 			const cityReq = await axios.get(
@@ -20,11 +17,14 @@ export default function CitySearch() {
 		}
 	};
 	const handleGetWeather = async (cityName: string) => {
-		const { name, lat, lon, state } = await handleGetCity(cityName);
-
 		try {
+			const { name, lat, lon, state } = await handleGetCity(cityName);
+
+			if (!name) {
+				alert("Digite um nome válido");
+			}
 			const weatherReq = await axios.get(
-				`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=a6564119b6b053c6c561774a3ed814bf`
+				`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=a6564119b6b053c6c561774a3ed814bf&lang=pt_br`
 			);
 
 			const weatherData = await weatherReq.data;
@@ -32,12 +32,17 @@ export default function CitySearch() {
 			setWeather(weatherData);
 			return weather;
 		} catch (error) {
-			console.log("Erro Get Weather", error);
+			alert("Digite um nome válido");
 		}
 	};
 
+	// Consumir Contexto Principal
+	const { weather, setWeather } = useContext(WheatherContext);
+
+	// Armazenar Estado da cidade desejada
+	const [city, setCity] = useState("");
+
 	useEffect(() => {
-		console.log(city);
 		console.log(weather);
 	}, [weather, city]);
 	return (
@@ -53,6 +58,7 @@ export default function CitySearch() {
 				type="text"
 				name="city"
 				id="city"
+				value={city}
 				placeholder="Digite o nome da cidade"
 				className="p-3 rounded-md w-[85%] font-semibold"
 			/>
