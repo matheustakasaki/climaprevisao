@@ -43,7 +43,7 @@ export default function CityInfo() {
 										Atual
 									</p>
 									<h3
-										className={`text-2xl font-bold ${tempTextColor}`}
+										className={`text-2xl font-bold text-zinc-400 ${tempTextColor}`}
 									>{`${temp}ºC`}</h3>
 								</div>
 								<div className="text-center">

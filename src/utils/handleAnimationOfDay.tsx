@@ -18,6 +18,6 @@ export function handleAnimationOfDay(temp: string, description: string) {
 	} else if (description === "Thunderstorm") {
 		return <Thunderstorm />;
 	} else {
-		<CloudySun />;
+		return <CloudySun />;
 	}
 }
