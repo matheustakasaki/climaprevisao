@@ -8,7 +8,7 @@ cd dist
 echo > .nojekyll
 
 git init
-git checkout -B gh-pages
+git checkout -B master
 git add -A
 git commit -m 'deploy'
 
