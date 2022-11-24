@@ -59,7 +59,7 @@ export default function CityInfo() {
 							</p>
 						</div>
 
-						<aside className="max-w-md">
+						<aside className="max-w-md drop-shadow-[0_0_0.75rem_rgba(156,156,156,1)]">
 							{handleAnimationOfDay(temp, weatherDescription)}
 						</aside>
 					</section>
